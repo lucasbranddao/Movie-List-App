@@ -33,6 +33,8 @@ class MovieListViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.topViewController?.title = "Movies"
         applyViewCode()
     }
 }
@@ -57,19 +59,6 @@ extension MovieListViewController: ViewCodeConfig{
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
 
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return HeaderLabel(text: "Movies", withPadding: true)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -77,14 +66,19 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableViewCell", for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
         let movie = movies[indexPath.row]
-        let genres = movie.genre?.genresString()
+//        let genres = movie.genre?.genresString()
         cell.movieImageView.downloaded(from: movie.imageurl?.first ?? "")
         cell.titleLabel.text = movie.title
         cell.yearLabel.text = movie.released == nil ? "--" : "\(movie.released ?? 0)"
-        cell.genresLabel.text = genres
+        
+        if movie.genre?.count ?? 0 > 0, let genreString = movie.genre?.first{
+            cell.firstGenreLabel.text = " " +  genreString + " "
+        }
+        if movie.genre?.count ?? 0 > 1, let genreString = movie.genre?[1]{
+            cell.secondGenreLabel.text = " " +  genreString + " "
+        }
         cell.applyViewCode()
         return cell
     }
-    
     
 }

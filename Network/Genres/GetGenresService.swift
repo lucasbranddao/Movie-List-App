@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GenresServiceProtocol: class {
+protocol GenresServiceProtocol {
     func getGenres(completion: @escaping(_ response: [String]?, _ errorMessage: String?) -> Void)
 }
 

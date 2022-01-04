@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MoviesSearchServiceProtocol: class {
+protocol MoviesSearchServiceProtocol {
     func getMoviesAdvanced(genres: [String]?, completion: @escaping(_ response: MoviesSearchResponse?, _ errorMessage: String?) -> Void)
 }
 

@@ -20,7 +20,7 @@ class MainViewController: UIViewController{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = 5
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
@@ -218,13 +218,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         else{
             genreSelectedIndexes.append(index)
         }
-        let contentOffset = collectionView.contentOffset
+//        let contentOffset = collectionView.contentOffset
         collectionView.reloadData()
-        self.collectionView.reloadData()
-        self.collectionView.layoutIfNeeded()
-        DispatchQueue.main.async {
-            self.collectionView.setContentOffset(contentOffset, animated: false)
-        }
+//        self.collectionView.layoutIfNeeded()
+//        DispatchQueue.main.async {
+//            self.collectionView.setContentOffset(contentOffset, animated: false)
+//        }
     }
 }
 
