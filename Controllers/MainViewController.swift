@@ -47,7 +47,6 @@ class MainViewController: UIViewController{
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    
         getGenres()
     }
     
@@ -206,7 +205,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenresCollectionViewCell", for: indexPath) as? GenresCollectionViewCell else{ return UICollectionViewCell() }
         let index = indexPath.item
-        genreCell.setCell(text: genres[index], isSelected: genreSelectedIndexes.contains(index))
+        genreCell.setCell(text: genres[index])
         return genreCell
     }
     
@@ -218,12 +217,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         else{
             genreSelectedIndexes.append(index)
         }
-//        let contentOffset = collectionView.contentOffset
-        collectionView.reloadData()
-//        self.collectionView.layoutIfNeeded()
-//        DispatchQueue.main.async {
-//            self.collectionView.setContentOffset(contentOffset, animated: false)
-//        }
+        
+        let cell = collectionView.cellForItem(at: indexPath) as? GenresCollectionViewCell
+        cell?.clickedOnCell(isSelected: genreSelectedIndexes.contains(index))
     }
 }
 

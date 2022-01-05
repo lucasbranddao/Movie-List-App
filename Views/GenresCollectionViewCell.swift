@@ -19,15 +19,17 @@ class GenresCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setCell(text: String, isSelected: Bool){
+    func setCell(text: String){
         label.text = text
         applyViewCode()
         self.layoutSubviews()
+    }
+    
+    func clickedOnCell(isSelected: Bool){
         label.textColor = isSelected ? .white : .orangeCustomColor
         label.layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.orangeCustomColor.cgColor
         label.layer.backgroundColor = isSelected ? UIColor.orangeCustomColor.cgColor : UIColor.clear.cgColor
     }
-    
 }
 
 extension GenresCollectionViewCell: ViewCodeConfig{

@@ -66,7 +66,6 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableViewCell", for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
         let movie = movies[indexPath.row]
-//        let genres = movie.genre?.genresString()
         cell.movieImageView.downloaded(from: movie.imageurl?.first ?? "")
         cell.titleLabel.text = movie.title
         cell.yearLabel.text = movie.released == nil ? "--" : "\(movie.released ?? 0)"
