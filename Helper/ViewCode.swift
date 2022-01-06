@@ -21,5 +21,3 @@ extension ViewCodeConfig{
         configureViews()
     }
 }
-
-

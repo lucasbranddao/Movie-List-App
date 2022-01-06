@@ -22,6 +22,7 @@
 		8C73470D25C0C6A400878737 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C73470C25C0C6A400878737 /* MovieListTableViewCell.swift */; };
 		8C831C1325BE4B6400C591BB /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1225BE4B6400C591BB /* ViewCode.swift */; };
 		8C831C1725BE5BB400C591BB /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1625BE5BB400C591BB /* UIHelpers.swift */; };
+		8CBFEE5A27867BFC003FF57B /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE4B1026004337005716DC /* DataPersistence.swift */; };
 		8CCDD27625BC9DEB00B111B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDD27525BC9DEB00B111B5 /* AppDelegate.swift */; };
 		8CCDD27A25BC9DEB00B111B5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDD27925BC9DEB00B111B5 /* MainViewController.swift */; };
 		8CCDD27F25BC9DED00B111B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CCDD27E25BC9DED00B111B5 /* Assets.xcassets */; };
@@ -77,6 +78,8 @@
 		8C73470C25C0C6A400878737 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		8C831C1225BE4B6400C591BB /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		8C831C1625BE5BB400C591BB /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		8CB6CF792786437F00058C51 /* Movies.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Movies.entitlements; sourceTree = "<group>"; };
+		8CB6CF7A278643FC00058C51 /* MoviesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoviesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		8CCDD27225BC9DEB00B111B5 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CCDD27525BC9DEB00B111B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CCDD27925BC9DEB00B111B5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		8CCDD26925BC9DEB00B111B5 = {
 			isa = PBXGroup;
 			children = (
+				8CB6CF7A278643FC00058C51 /* MoviesWidgetExtension.entitlements */,
 				8CCDD27425BC9DEB00B111B5 /* Movies */,
 				8CDFBF74264372AF0073AA77 /* MoviesWidget */,
 				8CDFBF6F264372AF0073AA77 /* Frameworks */,
@@ -195,6 +199,7 @@
 		8CCDD27425BC9DEB00B111B5 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				8CB6CF792786437F00058C51 /* Movies.entitlements */,
 				8C73470A25C0BE6200878737 /* Controllers */,
 				8C73470925C0BE5100878737 /* Views */,
 				8C831C1125BE349800C591BB /* Network */,
@@ -353,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBFEE5A27867BFC003FF57B /* DataPersistence.swift in Sources */,
 				8CDFBF76264372AF0073AA77 /* MoviesWidget.swift in Sources */,
 				8CDFBF7B264372AF0073AA77 /* MoviesWidget.intentdefinition in Sources */,
 			);
@@ -432,7 +438,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"INFOPLIST_FILE[sdk=*]" = Movies/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -488,7 +494,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"INFOPLIST_FILE[sdk=*]" = Movies/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -504,6 +510,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Movies.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DMTTQ9R8TW;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
@@ -513,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lucas-Brandao.Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -524,8 +533,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Movies.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DMTTQ9R8TW;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -534,6 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lucas-Brandao.Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -544,7 +556,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = MoviesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DMTTQ9R8TW;
 				INFOPLIST_FILE = MoviesWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
@@ -555,6 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lucas-Brandao.Movies.MoviesWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -566,7 +580,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = MoviesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DMTTQ9R8TW;
 				INFOPLIST_FILE = MoviesWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
@@ -577,6 +592,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lucas-Brandao.Movies.MoviesWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class MainViewController: UIViewController{
     
@@ -211,6 +212,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.item
+        UserDefaults.group.set(genres[index], forKey: "genre")
+        WidgetCenter.shared.reloadAllTimelines()
+        
         if genreSelectedIndexes.contains(index) {
             genreSelectedIndexes.removeAll(where: { $0 == index })
         }

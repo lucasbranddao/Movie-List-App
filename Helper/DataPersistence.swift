@@ -18,3 +18,7 @@ public class GenresData{
         return userDefaults.object(forKey: "genres") as? [String]
     }
 }
+
+extension UserDefaults {
+  static let group = UserDefaults(suiteName: "group.Lucas-Brandao.Movies")!
+}
