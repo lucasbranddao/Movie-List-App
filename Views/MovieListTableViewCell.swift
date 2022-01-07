@@ -92,7 +92,7 @@ extension MovieListTableViewCell: ViewCodeConfig{
         grayView.layer.cornerRadius = 8.0
         grayView.sizeToFit()
         
-        movieImageView.contentMode = .scaleToFill
+        movieImageView.contentMode = .scaleAspectFill
         movieImageView.layoutIfNeeded()
         movieImageView.layer.masksToBounds = true
         movieImageView.layer.cornerRadius = 8.0

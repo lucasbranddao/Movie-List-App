@@ -11,7 +11,8 @@ struct APIConstants {
     static let baseEndpoint = "https://ott-details.p.rapidapi.com"
     
     //MARK: Insert your RapidAPI token here
-    static let token = ""
+    static let token = "64851682d2msh2bc59d76775ca15p1ffd22jsn31e638b59081"
+//    static let token = "55f456827amsh4a6dcc5baa80a42p15aa28jsn7c07d67c1b64
 
 }
 
