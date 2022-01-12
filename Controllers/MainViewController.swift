@@ -7,6 +7,7 @@
 
 import UIKit
 import WidgetKit
+import CoreData
 
 class MainViewController: UIViewController{
     
@@ -53,8 +54,9 @@ class MainViewController: UIViewController{
     
     
     func getGenres(){
-        if let genresSaved = GenresData().getGenres(){
-            self.genres = genresSaved
+        let cachedGenres = GenresData().getGenres()
+        if !cachedGenres.isEmpty{
+            self.genres = cachedGenres
         }
         else{
             GenresService().getGenres(completion: { response, error in
