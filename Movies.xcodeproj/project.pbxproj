@@ -166,13 +166,6 @@
 			path = "Movies Search";
 			sourceTree = "<group>";
 		};
-		8C73470925C0BE5100878737 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		8C831C1125BE349800C591BB /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +217,6 @@
 			children = (
 				8C59DC7827EABA0B00D491BD /* Modules */,
 				8CB6CF792786437F00058C51 /* Movies.entitlements */,
-				8C73470925C0BE5100878737 /* Views */,
 				8C831C1125BE349800C591BB /* Network */,
 				8C831C1925BE5BB900C591BB /* Helper */,
 				8CCDD27525BC9DEB00B111B5 /* AppDelegate.swift */,
