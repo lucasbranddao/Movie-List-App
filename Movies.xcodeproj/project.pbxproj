@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		8C831C1325BE4B6400C591BB /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1225BE4B6400C591BB /* ViewCode.swift */; };
 		8C831C1725BE5BB400C591BB /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1625BE5BB400C591BB /* UIHelpers.swift */; };
 		8C8707FE27EBEE580085459F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8707FD27EBEE580085459F /* SearchViewModel.swift */; };
+		8C87080127EBF02F0085459F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8C87080027EBF02F0085459F /* RxCocoa */; };
+		8C87080327EBF02F0085459F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C87080227EBF02F0085459F /* RxSwift */; };
 		8CC31279278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC31277278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld */; };
 		8CC3127A278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC31277278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld */; };
 		8CCDD27625BC9DEB00B111B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDD27525BC9DEB00B111B5 /* AppDelegate.swift */; };
@@ -107,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C87080327EBF02F0085459F /* RxSwift in Frameworks */,
+				8C87080127EBF02F0085459F /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +272,10 @@
 				8CDFBF7E264372AF0073AA77 /* PBXTargetDependency */,
 			);
 			name = Movies;
+			packageProductDependencies = (
+				8C87080027EBF02F0085459F /* RxCocoa */,
+				8C87080227EBF02F0085459F /* RxSwift */,
+			);
 			productName = Movies;
 			productReference = 8CCDD27225BC9DEB00B111B5 /* Movies.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +323,9 @@
 				Base,
 			);
 			mainGroup = 8CCDD26925BC9DEB00B111B5;
+			packageReferences = (
+				8C8707FF27EBF02F0085459F /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 8CCDD27325BC9DEB00B111B5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -654,6 +665,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C8707FF27EBF02F0085459F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C87080027EBF02F0085459F /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C8707FF27EBF02F0085459F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		8C87080227EBF02F0085459F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C8707FF27EBF02F0085459F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8CC31277278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld */ = {

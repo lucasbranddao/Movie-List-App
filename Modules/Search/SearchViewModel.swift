@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+
 
 class SearchViewModel{
     
+    var genres = PublishSubject<[String]>()
     
+    func fetchGenres(){
         
-    
+    }
+
 }
