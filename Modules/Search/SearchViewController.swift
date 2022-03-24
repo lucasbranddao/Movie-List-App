@@ -9,7 +9,7 @@ import UIKit
 import WidgetKit
 import CoreData
 
-class MainViewController: UIViewController{
+class SearchViewController: UIViewController{
     
     //MARK: Components
     let scrollView = UIScrollView()
@@ -93,7 +93,7 @@ class MainViewController: UIViewController{
 }
 
 //MARK: Views's setup
-extension MainViewController: ViewCodeConfig{
+extension SearchViewController: ViewCodeConfig{
     func buildHierarchy() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -200,7 +200,7 @@ extension MainViewController: ViewCodeConfig{
 }
 
 //MARK: CollectionView Setup
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return genres.count
     }
@@ -229,14 +229,14 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-extension MainViewController: UITextFieldDelegate{
+extension SearchViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //search
         return true
     }
 }
 
-extension MainViewController: UIScrollViewDelegate{
+extension SearchViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }

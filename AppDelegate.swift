@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        let navigationController = UINavigationController(rootViewController: MainViewController())
+        let navigationController = UINavigationController(rootViewController: SearchViewController())
         
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.topViewController?.title = "Search"
