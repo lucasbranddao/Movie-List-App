@@ -24,6 +24,7 @@
 		8C796EAC278E56BF00E7E372 /* WidgetCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C796EAA278E56BF00E7E372 /* WidgetCommunication.swift */; };
 		8C831C1325BE4B6400C591BB /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1225BE4B6400C591BB /* ViewCode.swift */; };
 		8C831C1725BE5BB400C591BB /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C831C1625BE5BB400C591BB /* UIHelpers.swift */; };
+		8C8707FE27EBEE580085459F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8707FD27EBEE580085459F /* SearchViewModel.swift */; };
 		8CC31279278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC31277278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld */; };
 		8CC3127A278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC31277278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld */; };
 		8CCDD27625BC9DEB00B111B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDD27525BC9DEB00B111B5 /* AppDelegate.swift */; };
@@ -82,6 +83,7 @@
 		8C796EAA278E56BF00E7E372 /* WidgetCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCommunication.swift; sourceTree = "<group>"; };
 		8C831C1225BE4B6400C591BB /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		8C831C1625BE5BB400C591BB /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		8C8707FD27EBEE580085459F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8CB6CF792786437F00058C51 /* Movies.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Movies.entitlements; sourceTree = "<group>"; };
 		8CB6CF7A278643FC00058C51 /* MoviesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoviesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		8CC31278278E4E5E00D88BC2 /* MoviesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesModel.xcdatamodel; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				8CCDD27925BC9DEB00B111B5 /* SearchViewController.swift */,
 				8C7346DE25BF09F400878737 /* GenresCollectionViewCell.swift */,
+				8C8707FD27EBEE580085459F /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8707FE27EBEE580085459F /* SearchViewModel.swift in Sources */,
 				8CC31279278E4E5E00D88BC2 /* MoviesModel.xcdatamodeld in Sources */,
 				8C7346F725BF593000878737 /* GetGenresService.swift in Sources */,
 				8C73470025BFCDB600878737 /* GetMoviesService.swift in Sources */,
