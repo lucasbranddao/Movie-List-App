@@ -192,7 +192,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenresCollectionViewCell", for: indexPath) as? GenresCollectionViewCell else{ return UICollectionViewCell() }
         let index = indexPath.item
-        genreCell.setCell(text: viewModel.genres[index])
+        genreCell.setCell(text: viewModel.genres[index], isSelected: viewModel.isSelected(index: index))
         return genreCell
     }
     
