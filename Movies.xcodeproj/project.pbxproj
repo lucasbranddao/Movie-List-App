@@ -41,6 +41,7 @@
 		8CDFBF7B264372AF0073AA77 /* MoviesWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8CDFBF77264372AF0073AA77 /* MoviesWidget.intentdefinition */; };
 		8CDFBF7C264372AF0073AA77 /* MoviesWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8CDFBF77264372AF0073AA77 /* MoviesWidget.intentdefinition */; };
 		8CDFBF7F264372AF0073AA77 /* MoviesWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CDFBF6E264372AF0073AA77 /* MoviesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8CE754A327FD457A00DE57BD /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE754A227FD457A00DE57BD /* MovieListViewModel.swift */; };
 		8CEE4B1126004337005716DC /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE4B1026004337005716DC /* DataPersistence.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		8CDFBF77264372AF0073AA77 /* MoviesWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MoviesWidget.intentdefinition; sourceTree = "<group>"; };
 		8CDFBF78264372AF0073AA77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CDFBF7A264372AF0073AA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CE754A227FD457A00DE57BD /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		8CEE4B1026004337005716DC /* DataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				8C73470525C0BC5900878737 /* MovieListViewController.swift */,
+				8CE754A227FD457A00DE57BD /* MovieListViewModel.swift */,
 				8C73470C25C0C6A400878737 /* MovieListTableViewCell.swift */,
 			);
 			path = Movies;
@@ -375,6 +378,7 @@
 				8C7346E725BF556D00878737 /* Request.swift in Sources */,
 				8C7346FC25BFCAC700878737 /* GetMoviesRequest.swift in Sources */,
 				8C73470D25C0C6A400878737 /* MovieListTableViewCell.swift in Sources */,
+				8CE754A327FD457A00DE57BD /* MovieListViewModel.swift in Sources */,
 				8CCDD27A25BC9DEB00B111B5 /* SearchViewController.swift in Sources */,
 				8CEE4B1126004337005716DC /* DataPersistence.swift in Sources */,
 				8C831C1325BE4B6400C591BB /* ViewCode.swift in Sources */,
