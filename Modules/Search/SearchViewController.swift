@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import WidgetKit
+import RxSwift
+import RxCocoa
 import CoreData
 
-class MainViewController: UIViewController{
+class SearchViewController: UIViewController{
     
     //MARK: Components
     let scrollView = UIScrollView()
@@ -30,70 +31,55 @@ class MainViewController: UIViewController{
     let textFieldHeight = 50
     let padding: CGFloat = 15.0
     let collectionViewHeight: CGFloat = 200
-    var genreSelectedIndexes: [Int] = []
-    var genres: [String] = []{
-        didSet{
-            self.collectionView.reloadData()
-        }
-    }
-    
+
     override func loadView() {
         let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .darkCustomColor
         self.view = view
     }
     
+    private lazy var viewModel = SearchViewModel()
+    private lazy var bag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyViewCode()
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-        getGenres()
+        setupObservable()
+        setupTapsRx()
+        setupBinding()
+        viewModel.fetchGenres()
     }
     
-    
-    func getGenres(){
-        let cachedGenres = GenresData().getGenres()
-        if !cachedGenres.isEmpty{
-            self.genres = cachedGenres
-        }
-        else{
-            GenresService().getGenres(completion: { response, error in
-                guard let genres = response else { return }
-                self.genres = genres
-                GenresData().saveGenres(genres: genres)
-            })
-        }
-    }
-    
-    @objc func pressed(sender: UIButton!) {
-        let selectedGenres = genreSelectedIndexes.map({ genres[$0] })
+    func setupObservable(){
+        viewModel.fetchedData.subscribe(onNext: { [weak self] isSuccess in
+            if isSuccess{
+                self?.collectionView.reloadData()
+            }
+            else{
+                //error
+            }
+        }).disposed(by: bag)
         
-        //Search By Name
-        if let title = textField.text, title.trimmingCharacters(in: .whitespaces) > ""{
-            MoviesSearchService().getMoviesByTitle(title: title, completion: { response, error in
-                guard var movies = response?.results else { return }
-                if !selectedGenres.isEmpty{
-                    movies = movies.filter({ ($0.genre?.contains(where: selectedGenres.contains) ?? false) })
-                }
-                self.navigationController?.pushViewController(MovieListViewController(movies: movies), animated: true)
-            })
-        }
-        
-        //Search By Genre
-        else{
-            MoviesSearchService().getMoviesAdvanced(genres: selectedGenres, completion: { response, error in
-                guard let movies = response?.results else { return }
-                self.navigationController?.pushViewController(MovieListViewController(movies: movies), animated: true)
-            })
-        }
+        viewModel.searching.subscribe(onNext: { [weak self] movies in
+            self?.navigationController?.pushViewController(MovieListViewController(movies: movies), animated: true)
+        }).disposed(by: bag)
     }
-
+    
+    func setupTapsRx(){
+        searchButton.rx.tap.subscribe(onNext: { [weak self] _ in
+            self?.viewModel.search()
+        }).disposed(by: bag)
+    }
+    
+    func setupBinding(){
+        textField.rx.text.map { $0 ?? "" }.bind(to: viewModel.title).disposed(by: bag)
+    }
 }
 
 //MARK: Views's setup
-extension MainViewController: ViewCodeConfig{
+extension SearchViewController: ViewCodeConfig{
     func buildHierarchy() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -194,49 +180,39 @@ extension MainViewController: ViewCodeConfig{
         searchButton.setTitle("Go", for: .normal)
         searchButton.layer.cornerRadius = 37.5
         searchButton.backgroundColor = .orangeCustomColor
-        searchButton.addTarget(self, action: #selector(self.pressed(sender:)), for: .touchUpInside)
-
     }
 }
 
 //MARK: CollectionView Setup
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return genres.count
+        return viewModel.genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenresCollectionViewCell", for: indexPath) as? GenresCollectionViewCell else{ return UICollectionViewCell() }
         let index = indexPath.item
-        genreCell.setCell(text: genres[index])
+        genreCell.setCell(text: viewModel.genres[index], isSelected: viewModel.isSelected(index: index))
         return genreCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.item
-        UserDefaults.group.set(genres[index], forKey: "genre")
-        WidgetCenter.shared.reloadAllTimelines()
-        
-        if genreSelectedIndexes.contains(index) {
-            genreSelectedIndexes.removeAll(where: { $0 == index })
-        }
-        else{
-            genreSelectedIndexes.append(index)
-        }
-        
+        viewModel.genreClicked(index: index)
+
         let cell = collectionView.cellForItem(at: indexPath) as? GenresCollectionViewCell
-        cell?.clickedOnCell(isSelected: genreSelectedIndexes.contains(index))
+        cell?.clickedOnCell(isSelected: viewModel.isSelected(index: index))
     }
 }
 
-extension MainViewController: UITextFieldDelegate{
+extension SearchViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //search
         return true
     }
 }
 
-extension MainViewController: UIScrollViewDelegate{
+extension SearchViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }

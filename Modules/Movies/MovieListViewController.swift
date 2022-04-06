@@ -6,19 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class MovieListViewController: UIViewController{
     
     let tableView = UITableView(frame: .zero, style: .grouped)
-    var movies: [MoviesSearchResponse.Result] = []{
-        didSet{
-            self.tableView.reloadData()
-        }
-    }
+    private var viewModel: MovieListViewModel!
+    private lazy var bag = DisposeBag()
     
     init(movies: [MoviesSearchResponse.Result]) {
         super.init(nibName: nil, bundle: nil)
-        self.movies = movies
+        self.viewModel = MovieListViewModel(movies: movies)
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +34,12 @@ class MovieListViewController: UIViewController{
         
         navigationController?.topViewController?.title = "Movies"
         applyViewCode()
+    }
+    
+    private func setObservable(){
+        viewModel?.movies.subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).disposed(by: bag)
     }
 }
 
@@ -60,22 +64,21 @@ extension MovieListViewController: ViewCodeConfig{
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return viewModel.moviesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableViewCell", for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
-        let movie = movies[indexPath.row]
         cell.movieImageView.image = UIImage(named: "defaultMovieImage")
-        cell.movieImageView.downloaded(from: movie.imageurl?.first ?? "")
-        cell.titleLabel.text = movie.title
-        cell.yearLabel.text = movie.released == nil ? "--" : "\(movie.released ?? 0)"
-        
-        if movie.genre?.count ?? 0 > 0, let genreString = movie.genre?.first{
+        cell.movieImageView.downloaded(from: viewModel.movieImage(for: indexPath.row))
+        cell.titleLabel.text = viewModel.movieTitle(for: indexPath.row)
+        cell.yearLabel.text = viewModel.movieYearLabel(for: indexPath.row)
+        let genres = viewModel.movieGenres(for: indexPath.row)
+        if genres.count > 0, let genreString = genres.first{
             cell.firstGenreLabel.text = " " +  genreString + " "
         }
-        if movie.genre?.count ?? 0 > 1, let genreString = movie.genre?[1]{
-            cell.secondGenreLabel.text = " " +  genreString + " "
+        if genres.count > 1{
+            cell.secondGenreLabel.text = " " +  genres[1] + " "
         }
         cell.applyViewCode()
         return cell
