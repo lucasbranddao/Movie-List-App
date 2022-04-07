@@ -84,4 +84,10 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let animator = TableViewAnimator(animation: TableViewAnimator.makeMoveUpWithFadeAnimation(rowHeight: 100, duration: 0.5, delayFactor: 0))
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
+    
+
 }

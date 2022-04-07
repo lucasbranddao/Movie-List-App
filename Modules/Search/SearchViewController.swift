@@ -63,12 +63,14 @@ class SearchViewController: UIViewController{
         }).disposed(by: bag)
         
         viewModel.searching.subscribe(onNext: { [weak self] movies in
+            self?.stopLoading()
             self?.navigationController?.pushViewController(MovieListViewController(movies: movies), animated: true)
         }).disposed(by: bag)
     }
     
     func setupTapsRx(){
         searchButton.rx.tap.subscribe(onNext: { [weak self] _ in
+            self?.startLoading()
             self?.viewModel.search()
         }).disposed(by: bag)
     }
