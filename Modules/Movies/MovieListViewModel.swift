@@ -9,7 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MovieListViewModel{
+protocol MovieListViewModelProtocol {
+    func movieTitle(for index: Int) -> String
+    func movieImage(for index: Int) -> String
+    func movieYearLabel(for index: Int) -> String
+    func movieGenres(for index: Int) -> [String]
+}
+
+final class MovieListViewModel: MovieListViewModelProtocol {
 
     var movies = PublishSubject<[MoviesSearchResponse.Result]>()
     var moviesValues: [MoviesSearchResponse.Result] = []
