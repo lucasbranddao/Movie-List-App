@@ -4,16 +4,16 @@ Movie List App is an application developed while studying and practicing viewCod
 ## Features
 ### Search for movies using the OMDB API
 <img src="https://github.com/lucasbranddao/Movie-List-App/assets/42322507/ec7590a7-35c5-4b46-9d32-4a9b76656427" width="235" height="511">
----
+
 
 ### Creation and management of favorite movies lists
 <img src="https://github.com/lucasbranddao/Movie-List-App/assets/42322507/9d7f3ad1-c61c-44b9-8a34-431d9247076d" width="235" height="511">
----
+
 
 ### Integration with WidgetKit to display movies directly on the home screen
 <img src="https://github.com/lucasbranddao/Movie-List-App/assets/42322507/7a29357b-1c3d-45db-9244-906c1d48cdef)" width="235" height="511">
 <img src="https://github.com/lucasbranddao/Movie-List-App/assets/42322507/a652d3e7-caf1-4d0b-9f1a-7fa5e6c65efd)" width="235" height="511">
----
+
 
 
 ## How To Use
