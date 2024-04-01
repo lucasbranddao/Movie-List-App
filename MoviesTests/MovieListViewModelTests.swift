@@ -7,7 +7,7 @@
 
 import XCTest
 import RxSwift
-@testable import Movies // Import your app's module here
+@testable import Movies 
 
 class MovieListViewModelTests: XCTestCase {
 

@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol MovieListViewModelProtocol {
+    var moviesCount: Int { get set }
     func movieTitle(for index: Int) -> String
     func movieImage(for index: Int) -> String
     func movieYearLabel(for index: Int) -> String

@@ -10,16 +10,28 @@ import RxSwift
 import RxCocoa
 import WidgetKit
 
-class SearchViewModel{
+protocol SearchViewModelProtocol {
+    func fetchGenres()
+    func search()
+    func genreClicked(index: Int)
+    func isSelected(index: Int) -> Bool
+}
+
+final class SearchViewModel: SearchViewModelProtocol {
     
     var fetchedData = PublishSubject<Bool>()
     var genres: [String] = []
     var selectedGenres: [String] = []
     var title = BehaviorRelay<String>(value: "")
     var searching = PublishSubject<[MoviesSearchResponse.Result]>()
+    let genresData: GenresDataProtocol
+
+    init(genresData: GenresDataProtocol = GenresData()) {
+        self.genresData = genresData
+    }
     
     func fetchGenres(){
-        let cachedGenres = GenresData().getGenres()
+        let cachedGenres = genresData.getGenres()
         if !cachedGenres.isEmpty{
             handleResponse(genres: cachedGenres)
         }
@@ -76,7 +88,7 @@ class SearchViewModel{
         self.genres = genres
         fetchedData.onNext(true)
         fetchedData.onCompleted()
-        GenresData().saveGenres(genres: genres)
+        genresData.saveGenres(genres: genres)
     }
     
     private func UpdateWidget(genre: String){

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C66C6A42AD628670031209D /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66C6A32AD628670031209D /* SearchViewModelTests.swift */; };
+		8C66C6A72AD6335C0031209D /* GenresDataSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66C6A62AD6335C0031209D /* GenresDataSpy.swift */; };
+		8C66C6AA2AD6346D0031209D /* GenresServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66C6A92AD6346D0031209D /* GenresServiceMock.swift */; };
 		8C7346DC25BF05EE00878737 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7346DB25BF05EE00878737 /* Constants.swift */; };
 		8C7346DF25BF09F400878737 /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7346DE25BF09F400878737 /* GenresCollectionViewCell.swift */; };
 		8C7346E425BF555400878737 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7346E325BF555400878737 /* Network.swift */; };
@@ -82,6 +84,8 @@
 
 /* Begin PBXFileReference section */
 		8C66C6A32AD628670031209D /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		8C66C6A62AD6335C0031209D /* GenresDataSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDataSpy.swift; sourceTree = "<group>"; };
+		8C66C6A92AD6346D0031209D /* GenresServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresServiceMock.swift; sourceTree = "<group>"; };
 		8C6F556625F857DF00ED970B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C7346DB25BF05EE00878737 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8C7346DE25BF09F400878737 /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +187,22 @@
 			path = Movies;
 			sourceTree = "<group>";
 		};
+		8C66C6A52AD632B10031209D /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				8C66C6A62AD6335C0031209D /* GenresDataSpy.swift */,
+			);
+			path = Spies;
+			sourceTree = "<group>";
+		};
+		8C66C6A82AD634460031209D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8C66C6A92AD6346D0031209D /* GenresServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		8C7346EF25BF565A00878737 /* Genres */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +252,8 @@
 		8CB4ADE72AD4D99D00A577CB /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C66C6A82AD634460031209D /* Mocks */,
+				8C66C6A52AD632B10031209D /* Spies */,
 				8CB4ADE82AD4D99D00A577CB /* MovieListViewModelTests.swift */,
 				8C66C6A32AD628670031209D /* SearchViewModelTests.swift */,
 			);
@@ -438,7 +460,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C66C6A42AD628670031209D /* SearchViewModelTests.swift in Sources */,
+				8C66C6AA2AD6346D0031209D /* GenresServiceMock.swift in Sources */,
 				8CB4ADE92AD4D99D00A577CB /* MovieListViewModelTests.swift in Sources */,
+				8C66C6A72AD6335C0031209D /* GenresDataSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

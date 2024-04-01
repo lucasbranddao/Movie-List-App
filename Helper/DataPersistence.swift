@@ -8,7 +8,12 @@
 import UIKit
 import CoreData
 
-public class GenresData{
+protocol GenresDataProtocol {
+    func saveGenres(genres: [String])
+    func getGenres() -> [String]
+}
+
+final class GenresData: GenresDataProtocol {
     
     func saveGenres(genres: [String]){
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
