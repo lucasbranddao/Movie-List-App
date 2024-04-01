@@ -66,6 +66,7 @@ struct MoviesWidget: Widget {
         }
         .configurationDisplayName("Movies")
         .description("This is the last selected genre")
+        .contentMarginsDisabled()
     }
 }
 
